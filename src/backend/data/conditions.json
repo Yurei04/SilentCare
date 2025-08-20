@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Migraine",
+        "keywords": ["headache", "migraine", "light sensitivity", "nausea"]
+    },
+    {
+        "name": "Anxiety",
+        "keywords": ["anxious", "panic", "worry", "stress"]
+    },
+    {
+        "name": "Irritable Bowel Syndrome",
+        "keywords": ["stomach pain", "diarrhea", "constipation", "bloating"]
+    }
+]
