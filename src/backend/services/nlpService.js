@@ -1,20 +1,30 @@
-const natural = require("natural");
-const compromise = require("compromise");
-const conditions =require("@/backend/data/conditions.json");
+import path from "path";
+import fs from "fs"
+import natural from "natural"
+import nlp from "compromise"
+
+const dataPath = path.join(process.cwd(), "data", "conditions.json");
+const conditionsBase = JSON.parse(fs.readFileSync(dataPath, "utf-8"))
+
 
 function processMessage(message) {
     const tokens = new natural.WordTokenizer().tokenize(message.toLowerCase());
-    const doc = compromise(message);
-    
-    let matched = conditions.filter(condition => 
-        condition.keywords.come(keyword => message.toLowerCase().includes(keyword))
-    );
+    const doc = nlp(message);
+    matchedResponse(tokens);
+}
 
-    if (matched.length > 0) {
-        return ``;
-    } else {
-        return ``
+function matchedResponse ( replyResponse ) {
+    let matchedResponses = null;
+    
+    for (const category in conditionsBase ) {
+        conditionsBase[category].forEach((entry) => {
+            entry.keywords.forEach((keyword) => {
+                if (replyResponse.includes(keyword)) {
+                    matchedResponses = entry.response[Math.floor(Math.random() * entry.responses.length)];
+                }
+            })
+        });
     }
 }
 
-module.exports = { processMessage }
+module.exports = { matchedResponses }

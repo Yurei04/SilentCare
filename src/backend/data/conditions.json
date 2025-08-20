@@ -1,14 +1,22 @@
-[
+{
+  "head": [
     {
-        "name": "Migraine",
-        "keywords": ["headache", "migraine", "light sensitivity", "nausea"]
-    },
-    {
-        "name": "Anxiety",
-        "keywords": ["anxious", "panic", "worry", "stress"]
-    },
-    {
-        "name": "Irritable Bowel Syndrome",
-        "keywords": ["stomach pain", "diarrhea", "constipation", "bloating"]
+      "tag": "headache",
+      "keywords": ["headache", "migraine", "head pain", "pressure"],
+      "responses": [
+        "It sounds like you might be experiencing a headache. Do you also feel nausea or sensitivity to light?",
+        "Headaches can come from stress, dehydration, or other causes. Try logging when they occur."
+      ]
     }
-]
+  ],
+  "stomach": [
+    {
+      "tag": "stomach_pain",
+      "keywords": ["stomach", "belly", "abdominal", "tummy ache"],
+      "responses": [
+        "Stomach pain can have many causes — have you eaten anything unusual recently?",
+        "Sometimes stomach pain comes from indigestion. If severe, consult a doctor."
+      ]
+    }
+  ]
+}
