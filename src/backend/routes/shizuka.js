@@ -4,11 +4,11 @@ const { generateReport } = require("@/backend/services/pdfService.js");
 
 const router = express.Router();
 
-router.post("/chat", (res, req) => {
+router.post("/chat", (req, res) => {
     const { message } = req.body;
-    if (!message) return res.statusCode(400).json({ errpr:"No Message Received"});
+    if (!message) return res.status(400).json({ errpr:"No Message Received"});
 
-    const response = procecessMessage(message);
+    const response = proccessMessage(message);
     res.json({ reply: response });
 });
 

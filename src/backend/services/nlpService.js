@@ -14,17 +14,26 @@ function processMessage(message) {
 }
 
 function matchedResponse ( replyResponse ) {
-    let matchedResponses = null;
-    
+    let matchedResponses = [];
+
     for (const category in conditionsBase ) {
         conditionsBase[category].forEach((entry) => {
-            entry.keywords.forEach((keyword) => {
-                if (replyResponse.includes(keyword)) {
-                    matchedResponses = entry.response[Math.floor(Math.random() * entry.responses.length)];
+
+            let keywords = Array.isArray(entry.keywords) ? entry.keywords : entry.keywords.split(" ").filter(Boolean);
+
+            keywords.forEach((keyword) => {
+                if (replyResponse.includes(keyword.toLowerCase())) {
+                   if (entry.reponses && entry.responses.length > 0) {
+                        matchedResponses.push(
+                             entry.response[Math.floor(Math.random() * entry.responses.length)]
+                        );
+                   }
                 }
-            })
+            });
         });
     }
+
+    return matchedResponse.length > 0 ? matchedResponse : ["I’m not sure, could you tell me more about your symptoms?"];
 }
 
-module.exports = { matchedResponses }
+exports = { matchedResponses }
