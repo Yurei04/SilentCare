@@ -1,15 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
-const bodyPaser = require("body-parser")
+const bodyParser = require("body-parser")
 const port = 5000;
-const shizukaRoute = require("@/backend/routes/shizuka")
+const shizukaRoute = require("./routes/shizuka")
 
 app.get("/", (req, res) => {
     res.send("Express Server is Running");
 })
 
 app.use(cors());
-app.use(bodyPaser.json());
+app.use(bodyParser.json());
 
 app.use("/api/shizuka", shizukaRoute);
 
