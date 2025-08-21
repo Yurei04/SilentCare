@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/api/shizuka", shizukaRoute);
+app.use("/", shizukaRoute);
 
 app.listen(port, () => {
     console.log("server is running on port", port)

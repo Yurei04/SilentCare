@@ -34,6 +34,7 @@ export default function ShizukaMain() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message })
             });
+            console.log(res)
 
             const data = await res.json();
             console.log(data)
